@@ -45,7 +45,7 @@ window.onload = init;
 
 function init(){ //Botones de cronometro
     document.querySelector(".start").addEventListener("click",cronometrar);
-    // document.querySelector(".stop").addEventListener("click",parar);
+    document.querySelector(".stop").addEventListener("click",parar);
     document.querySelector(".reiniciar").addEventListener("click",reiniciar);
     h = 0;
     m = 0;
@@ -85,11 +85,24 @@ function escribir(){ // El cronometro en si
 //   modal_container2.classList.remove('show');
 // });
 
+
+let btnGuardar = document.getElementById("btnGuardar")
+btnGuardar.addEventListener("click", ()=>{
+    guardarRegistros(storageUsers)
+    // Swal.fire('Any fool can use a computer')
+
+})
+
+
+
 let btnMostrarRegistros = document.getElementById("verRegistros")
 btnMostrarRegistros.addEventListener("click",()=>{
     mostrarRegistros(storageUsers)
     
 })
+
+let prueba5 = document.getElementById("pruebas5")
+
 
 function parar(){ //Frena el cronometro y despliega ingreso del usuario
     clearInterval(id)
@@ -147,10 +160,6 @@ let contador = 0;
     tablero.onclick = function () {
     contador++;
     pElement.textContent = `Clicks que genero ${contador}`
-        if (contador == 30){
-            alert("Fin del juego")
-        }
-
     }
 
 let resultadoGeneral = document.getElementById("resultadoGeneral")
@@ -180,67 +189,15 @@ function controlEleccion() {
 
     imagenesM[opcionUnoId].setAttribute('src', 'images/frente.jpg')
     imagenesM[opcionDosId].setAttribute('src', 'images/frente.jpg')
-    }
+}
     imagenElegida = []
     imagenID = []
-
-    // <div id="registroDeUsuario">
-    // <form>
-    //     <input type="text" id="usuarioNew" name="titulo">
-    //     <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
-    // </form>
-    // </div>
-
     resuladoDisplay.textContent = ImagenGanadora.length
-    //resuladoDisplay.innerHTML = 
     if  (ImagenGanadora.length === imagenArray.length/2) {
-        parar();
         let resultadoFinal = document.getElementById("resultadoFinal")
 
-        resultadoFinal.innerHTML = `${resuladoDisplay.textCntent}`
-        if (ImagenGanadora.length == 6){
-            // let divNew = document.createElement("div")
-            // divNew.setAttribute("id", "registroDeUsuario")
-            // divNew.innerText = "CADASAAAAAA"
-            // pElement.append(divNew)
+        resultadoFinal.innerHTML = `${resuladoDisplay.textContent}`
 
-            // let formNew =document.createElement("form")
-            // formNew.setAttribute("id","formNew")
-            // divNew.append(formNew)
-
-            let inputNew = document.createElement("input")
-            inputNew.setAttribute("type", "text")
-            inputNew.setAttribute("id", "usuarioNew")
-            inputNew.setAttribute("name","titulo")
-            formNew.append(inputNew)
-
-            // let botonNew = document.createElement("button")
-            // botonNew.setAttribute("id","btnGuardar")
-            // botonNew.setAttribute("class","btn btn-success")
-            // formNew.append(botonNew)
-            // botonNew.innerText = "Boton"
-
-            // let divNew2 = document.createElement("div")
-            // divNew.append(divNew2)
-
-            // let h3New = document.createElement("h3")
-            // h3New.setAttribute("class","text-center m-4 text-bg-success")
-            // h3New.innerText = "Registros de Usuarios"
-            // divNew2.append(h3New)
-
-            // let divNew3 = document.createElement("div")
-            // divNew3.setAttribute("id", "registros")
-            // divNew3.setAttribute("class", "productosEstilos")
-            // divNew2.append(divNew3)
-
-
-    //         </div>
-    //         <h3 class="text-center m-4 text-bg-success">Registros de Usuarios</h3>
-    //         <div id="registros" class="productosEstilos"></div>              
-    //   </div>
-
-
-        }         
     }
 
 }
@@ -258,13 +215,12 @@ if (imagenElegida.length ===2) {
 //GUARDADO EN STORAGE Y RECUPERACION DE DATOS
 
 class storageUsuarios {
-    constructor(id, nombreUser, minutos,segundos, clicksUser, ImagenGanadora){
+    constructor(id, nombreUser, minutos,segundos, clicksUser){
         this.id = id,
         this.nombreUser = nombreUser,
         this.minutos = m,
         this.segundos = s,
-        this.clicksUser = clicksUser,
-        this.ImagenGanadora = ImagenGanadora.length
+        this.clicksUser = clicksUser
         }
         datosGuardados(){
         }
@@ -282,16 +238,6 @@ class storageUsuarios {
  }
 
 let divRegistros = document.getElementById("registros")
-
-let btnGuardar = document.getElementById("btnGuardar")
-btnGuardar.addEventListener("click", ()=>{
-    if (ImagenGanadora.length == 6){
-        guardarRegistros(storageUsers)
-    }else{
-    alert("guardar")
-}
-})
-
 
 function mostrarRegistros(array){
     divRegistros.innerHTML = ""
@@ -311,15 +257,21 @@ function mostrarRegistros(array){
         </div>
       </div>`
         divRegistros.append(nuevoRegistro)
+       
     })
 }
-let usuarioNew = document.getElementById("usuarioNew")
 function guardarRegistros(array){
-    let usuarioCreado = new storageUsuarios (array.length+1, usuarioNew.value, m, s, contador,ImagenGanadora)
+    let usuarioNew = document.getElementById("usuarioNew")
+    let usuarioCreado = new storageUsuarios (array.length+1, usuarioNew.value, m, s, contador)
     array.push(usuarioCreado)
     localStorage.setItem("storageUsers", JSON.stringify(array))
     usuarioNew.value = ""
     mostrarRegistros(array)
 }
+
+
+
+
+
 mostrarRegistros(storageUsers);
 })

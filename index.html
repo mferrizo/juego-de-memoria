@@ -32,7 +32,13 @@
         <div class="card">
           <div class="card-body"><!-- Cuerpo de Card 1 -->
             <h5 class="card-title">juego de Memoria</h5>
-            <p class="card-text cronometro">Instrucciones</p>
+            <p class="card-text cronometro">
+              <div id="registroDeUsuario">
+                <form id="formNew">
+                    <input type="text" id="usuarioNew" name="titulo">
+                    <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
+                </form>
+                </div>
             <div id="hms" class="text-center"></div>
             <button type="button" class="start btn btn-outline-primary">Iniciar juego</button>
             <button type="button" class="stop btn btn-outline-primary">Parar Juego</button>
@@ -54,20 +60,13 @@
       <div class="card">
         <div class="card-body">
           <div id="pruebas5">
-            <div id="registroDeUsuario">
-            <form>
-                <input type="text" id="usuarioNew" name="titulo">
-                <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
-            </form>
-            </div>
+
           <div class="container">
             <div class="row">
                <div class="col-3" id="verRegistros">
                </div>
             </div>        
           </div>
-
-
                 <h3 class="text-center m-4 text-bg-success">Registros de Usuarios</h3>
                 <div id="registros" class="productosEstilos"></div>              
           </div>
