@@ -46,7 +46,7 @@ window.onload = init;
 function init(){ //Botones de cronometro
     document.querySelector(".start").addEventListener("click",cronometrar);
     // document.querySelector(".stop").addEventListener("click",parar);
-    document.querySelector(".reiniciar").addEventListener("click",reiniciar);
+    // document.querySelector(".reiniciar").addEventListener("click",reiniciar);
     h = 0;
     m = 0;
     s = 0;
@@ -148,7 +148,8 @@ let contador = 0;
     contador++;
     pElement.textContent = `Clicks que genero ${contador}`
         if (contador == 30){
-            alert("Fin del juego")
+            alert("Perdiste")
+            location.reload()
         }
 
     }
@@ -199,48 +200,7 @@ function controlEleccion() {
 
         resultadoFinal.innerHTML = `${resuladoDisplay.textCntent}`
         if (ImagenGanadora.length == 6){
-            // let divNew = document.createElement("div")
-            // divNew.setAttribute("id", "registroDeUsuario")
-            // divNew.innerText = "CADASAAAAAA"
-            // pElement.append(divNew)
-
-            // let formNew =document.createElement("form")
-            // formNew.setAttribute("id","formNew")
-            // divNew.append(formNew)
-
-            let inputNew = document.createElement("input")
-            inputNew.setAttribute("type", "text")
-            inputNew.setAttribute("id", "usuarioNew")
-            inputNew.setAttribute("name","titulo")
-            formNew.append(inputNew)
-
-            // let botonNew = document.createElement("button")
-            // botonNew.setAttribute("id","btnGuardar")
-            // botonNew.setAttribute("class","btn btn-success")
-            // formNew.append(botonNew)
-            // botonNew.innerText = "Boton"
-
-            // let divNew2 = document.createElement("div")
-            // divNew.append(divNew2)
-
-            // let h3New = document.createElement("h3")
-            // h3New.setAttribute("class","text-center m-4 text-bg-success")
-            // h3New.innerText = "Registros de Usuarios"
-            // divNew2.append(h3New)
-
-            // let divNew3 = document.createElement("div")
-            // divNew3.setAttribute("id", "registros")
-            // divNew3.setAttribute("class", "productosEstilos")
-            // divNew2.append(divNew3)
-
-
-    //         </div>
-    //         <h3 class="text-center m-4 text-bg-success">Registros de Usuarios</h3>
-    //         <div id="registros" class="productosEstilos"></div>              
-    //   </div>
-
-
-        }         
+       }         
     }
 
 }
@@ -288,7 +248,7 @@ btnGuardar.addEventListener("click", ()=>{
     if (ImagenGanadora.length == 6){
         guardarRegistros(storageUsers)
     }else{
-    alert("guardar")
+    alert("Primero jugar luego guardar")
 }
 })
 
