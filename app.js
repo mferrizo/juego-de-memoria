@@ -108,12 +108,12 @@ function parar(){ //Frena el cronometro y despliega ingreso del usuario
     clearInterval(id)
     document.querySelector(".start").addEventListener("click",cronometrar);
     tablero.innerHTML = `<input type="button" value="Actualizar" onclick="location.reload()"/>`
-    let registroDeUsuario = document.getElementById("registroDeUsuario")
-    registroDeUsuario.innerHTML = `
-<form>
-    <input type="text" id="usuarioNew" name="titulo">
-    <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
-</form>`
+//     let registroDeUsuario = document.getElementById("registroDeUsuario")
+//     registroDeUsuario.innerHTML = `
+// <form>
+//     <input type="text" id="usuarioNew" name="titulo">
+//     <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
+// </form>`
 
 
 
