@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Juego de Memoria</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+        <div><h1>Bienvenido a Mini Juegos</h1>
+        <ul class="nav justify-content-center bg-primary">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+        </div>
+    </header>
+  <main>
+    <div class="row"><!-- General, de las 2 cards -->
+      <div class="col-sm-6"> <!-- Empieza Card 1-->
+        <div class="card">
+          <div class="card-body"><!-- Cuerpo de Card 1 -->
+            <h5 class="card-title">juego de Memoria</h5>
+            <p class="card-text cronometro">Instrucciones</p>
+            <div id="hms" class="text-center"></div>
+            <button type="button" class="start btn btn-outline-primary">Iniciar juego</button>
+            <button type="button" class="stop btn btn-outline-primary">Parar Juego</button>
+            <!-- <button type="button" class="reiniciar btn btn-outline-primary">Reiniciar</button> -->
+            <div><p id="areaContador" class="text-center"> Contador de clicks</p></div>
+              <div class="text-center"><h3>Puntaje:<span id="result"></span></h3></div>
+                <div id="resultadoGeneral"></div>
+                  <div id="resultadoFinal"></div>
+              </div>
+              <div id="tableroJuego"class="tablero"></div>
+              <div>
+          </div> <!-- finaliza cuerpo de Card 1 -->
+        <div>
+      </div>
+    </div>
+    </div>
+      <!-- SEGUNDA CARD -->
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div id="pruebas5">
+            <div id="registroDeUsuario">
+            <form>
+                <input type="text" id="usuarioNew" name="titulo">
+                <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
+            </form>
+            </div>
+          <div class="container">
+            <div class="row">
+               <div class="col-3" id="verRegistros">
+               </div>
+            </div>        
+          </div>
+
+
+                <h3 class="text-center m-4 text-bg-success">Registros de Usuarios</h3>
+                <div id="registros" class="productosEstilos"></div>              
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <button id="open">
+      Hacer Click
+    </button>
+    
+    <!-- <div id="modal_container2" class="modal-container2">
+      <div class="modal2">
+        <h1>Ventana Modal</h1>
+        <p>
+          <div id="registroDeUsuario">
+            <form>
+              <label for="titulo">Ingrese Usuario</label><br>
+                <input type="text" id="usuarioNew" name="titulo">
+                <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
+            </form>
+
+
+            </div>
+        </p>
+        <button id="close">Cerrar</button>
+      </div>
+    </div>              -->
+  </main>
+    <script src="./app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  </body>
+</html>
