@@ -148,7 +148,7 @@ let contador = 0;
     contador++;
     pElement.textContent = `Clicks que genero ${contador}`
         if (contador == 30){
-            alert("Fin del juego")
+            alert("Perdiste")
         }
 
     }
@@ -203,11 +203,11 @@ function controlEleccion() {
             // formNew.setAttribute("id","formNew")
             // divNew.append(formNew)
 
-            let inputNew = document.createElement("input")
-            inputNew.setAttribute("type", "text")
-            inputNew.setAttribute("id", "usuarioNew")
-            inputNew.setAttribute("name","titulo")
-            formNew.append(inputNew)
+            // let inputNew = document.createElement("input")
+            // inputNew.setAttribute("type", "text")
+            // inputNew.setAttribute("id", "usuarioNew")
+            // inputNew.setAttribute("name","titulo")
+            // formNew.append(inputNew)
 
             // let botonNew = document.createElement("button")
             // botonNew.setAttribute("id","btnGuardar")
@@ -283,7 +283,8 @@ btnGuardar.addEventListener("click", ()=>{
     if (ImagenGanadora.length == 6){
         guardarRegistros(storageUsers)
     }else{
-    alert("guardar")
+    alert("Primero jugar luego guardar")
+    location.reload()
 }
 })
 
