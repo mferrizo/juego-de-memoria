@@ -184,12 +184,7 @@ function controlEleccion() {
     imagenElegida = []
     imagenID = []
 
-    // <div id="registroDeUsuario">
-    // <form>
-    //     <input type="text" id="usuarioNew" name="titulo">
-    //     <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
-    // </form>
-    // </div>
+
 
     resuladoDisplay.textContent = ImagenGanadora.length
     //resuladoDisplay.innerHTML = 
