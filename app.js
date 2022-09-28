@@ -40,13 +40,11 @@ const imagenArray = [
     }
 ]
 
-// CRONOMETRO - Gaurda Tiempo desde el inicio en HH:MM:SS
+// CRONOMETRO - Guarda Tiempo desde el inicio en HH:MM:SS
 window.onload = init;
 
-function init(){ //Botones de cronometro
+function init(){ //Inicia el cronometro
     document.querySelector(".start").addEventListener("click",cronometrar);
-    // document.querySelector(".stop").addEventListener("click",parar);
-    document.querySelector(".reiniciar").addEventListener("click",reiniciar);
     h = 0;
     m = 0;
     s = 0;
@@ -72,19 +70,6 @@ function escribir(){ // El cronometro en si
     document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux; 
 }
 
-
-// let open = document.getElementById('open');
-// let modal_container2 = document.getElementById('modal_container2');
-// let close = document.getElementById('close');
-
-// open.addEventListener('click', () => {
-//   modal_container2.classList.add('show');  
-// });
-
-// close.addEventListener('click', () => {
-//   modal_container2.classList.remove('show');
-// });
-
 let btnMostrarRegistros = document.getElementById("verRegistros")
 btnMostrarRegistros.addEventListener("click",()=>{
     mostrarRegistros(storageUsers)
@@ -95,12 +80,7 @@ function parar(){ //Frena el cronometro y despliega ingreso del usuario
     clearInterval(id)
     document.querySelector(".start").addEventListener("click",cronometrar);
     tablero.innerHTML = `<input type="button" value="Actualizar" onclick="location.reload()"/>`
-//     let registroDeUsuario = document.getElementById("registroDeUsuario")
-//     registroDeUsuario.innerHTML = `
-// <form>
-//     <input type="text" id="usuarioNew" name="titulo">
-//     <button id="btnGuardar" class="btn btn-success">Guardar Usuario</button>
-// </form>`
+
 }
 
 
@@ -141,16 +121,25 @@ function crearTablero() {
 }
 
 
-//CONTADOR DE CLIC HASTA GANAR!
+//CONTADOR DE CLIC HASTA GANAR O PERDER A LOS 30 CLICKS, ALERTA Y REINICIA EL JUEGO
 let pElement = document.getElementById("areaContador");
 let contador = 0;
     tablero.onclick = function () {
     contador++;
     pElement.textContent = `Clicks que genero ${contador}`
         if (contador == 30){
-            alert("Perdiste")
+            Swal.fire({
+                title: '<strong><u>¡PERDISTE!</u></strong>',
+                text: 'Tienes un Limite de 30 elecciones.',
+                footer: 'Se que puedes hacerlo mejor, vuelve a jugar!!!',
+                icon: 'error',
+                allowOutsideClick: false,
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText: '<a href="index.html">VOLVER A JUGAR</a>',
+              })    
         }
-
     }
 
 let resultadoGeneral = document.getElementById("resultadoGeneral")
@@ -181,10 +170,9 @@ function controlEleccion() {
     imagenesM[opcionUnoId].setAttribute('src', 'images/frente.jpg')
     imagenesM[opcionDosId].setAttribute('src', 'images/frente.jpg')
     }
+    //ARRAYS DE RESULTADOS DE LAS COMPARATIVAS DE IMAGENES
     imagenElegida = []
     imagenID = []
-
-
 
     resuladoDisplay.textContent = ImagenGanadora.length
     //resuladoDisplay.innerHTML = 
@@ -192,48 +180,19 @@ function controlEleccion() {
         parar();
         let resultadoFinal = document.getElementById("resultadoFinal")
 
-        resultadoFinal.innerHTML = `${resuladoDisplay.textCntent}`
+        // resultadoFinal.innerHTML = `${resuladoDisplay.textCntent}`
         if (ImagenGanadora.length == 6){
-            // let divNew = document.createElement("div")
-            // divNew.setAttribute("id", "registroDeUsuario")
-            // divNew.innerText = "CADASAAAAAA"
-            // pElement.append(divNew)
-
-            // let formNew =document.createElement("form")
-            // formNew.setAttribute("id","formNew")
-            // divNew.append(formNew)
-
-            // let inputNew = document.createElement("input")
-            // inputNew.setAttribute("type", "text")
-            // inputNew.setAttribute("id", "usuarioNew")
-            // inputNew.setAttribute("name","titulo")
-            // formNew.append(inputNew)
-
-            // let botonNew = document.createElement("button")
-            // botonNew.setAttribute("id","btnGuardar")
-            // botonNew.setAttribute("class","btn btn-success")
-            // formNew.append(botonNew)
-            // botonNew.innerText = "Boton"
-
-            // let divNew2 = document.createElement("div")
-            // divNew.append(divNew2)
-
-            // let h3New = document.createElement("h3")
-            // h3New.setAttribute("class","text-center m-4 text-bg-success")
-            // h3New.innerText = "Registros de Usuarios"
-            // divNew2.append(h3New)
-
-            // let divNew3 = document.createElement("div")
-            // divNew3.setAttribute("id", "registros")
-            // divNew3.setAttribute("class", "productosEstilos")
-            // divNew2.append(divNew3)
-
-
-    //         </div>
-    //         <h3 class="text-center m-4 text-bg-success">Registros de Usuarios</h3>
-    //         <div id="registros" class="productosEstilos"></div>              
-    //   </div>
-
+            Swal.fire({
+                title: '<strong><u>¡GANASTE!</u></strong>',
+                text: `Terminaste antes de 30 clicks y llegaste a los 6 puntos`,
+                footer: 'Mejora tu tiempo, vuelve a jugar!!!',
+                icon: 'success',
+                allowOutsideClick: false,
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText: 'NO TE OLVIDES DE PONER TU NOMBRE PARA GUARDAR',
+              })    
 
         }         
     }
@@ -264,11 +223,9 @@ class storageUsuarios {
         datosGuardados(){
         }
 }
-// const storageUsuarios1 = new storageUsuarios(1,"Matias", 0, 25, 17)
 
 
  let storageUsers = []
-
  if(localStorage.getItem("storageUsers")){
         storageUsers = JSON.parse(localStorage.getItem("storageUsers"))
  }
@@ -277,8 +234,8 @@ class storageUsuarios {
  }
 
 let divRegistros = document.getElementById("registros")
-
 let btnGuardar = document.getElementById("btnGuardar")
+
 btnGuardar.addEventListener("click", ()=>{
     if (ImagenGanadora.length == 6){
         guardarRegistros(storageUsers)
@@ -293,7 +250,7 @@ function mostrarRegistros(array){
     divRegistros.innerHTML = ""
     array.forEach((storageUsuarios)=>{
         let nuevoRegistro = document.createElement("div")
-        nuevoRegistro.innerHTML = `  <div class="container text-center">
+        nuevoRegistro.innerHTML = `<div class="container text-center">
         <div class="row">
           <div class="col">
             ${storageUsuarios.nombreUser}
