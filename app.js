@@ -126,7 +126,7 @@ let pElement = document.getElementById("areaContador");
 let contador = 0;
     tablero.onclick = function () {
     contador++;
-    pElement.textContent = `Clicks que genero ${contador}`
+    pElement.textContent = `${contador}`
         if (contador == 30){
             Swal.fire({
                 title: '<strong><u>¡PERDISTE!</u></strong>',
